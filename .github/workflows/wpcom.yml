@@ -5,12 +5,30 @@ on:
     branches:
       - main
   workflow_dispatch:
+
 jobs:
   Publish-Website:
     name: Publish-Website
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify deployment structure
+        run: |
+          echo "=== Deployment Structure ==="
+          echo "Themes:"
+          ls -d themes/*/ 2>/dev/null || echo "  (none)"
+          echo "Plugins:"
+          ls -d plugins/*/ 2>/dev/null || echo "  (none)"
+          echo ""
+          echo "=== File counts ==="
+          echo "Theme files: $(find themes -type f 2>/dev/null | wc -l)"
+          echo "Plugin files: $(find plugins -type f 2>/dev/null | wc -l)"
+          echo ""
+          echo "Deployment target: /wp-content"
+
       - name: Upload the artifact
         uses: actions/upload-artifact@v4
         with:
@@ -18,4 +36,8 @@ jobs:
           path: |
             .
             !.git*
+            !README.md
+            !LICENSE
+            !*.md
+            !.gitignore
           retention-days: 1

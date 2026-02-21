@@ -1,0 +1,59 @@
+# =============================================================================
+# WordPress.com GitHub Deployment - .gitignore
+# =============================================================================
+# This repo deploys to /wp-content on WordPress.com via GitHub Deployments.
+# Only version-controlled code (themes, plugins) should be tracked.
+# Uploads, caches, and managed hosting files are excluded.
+# =============================================================================
+
+# --- Uploads (managed via SFTP/WPVivid, too large for git) ---
+uploads/
+
+# --- WordPress Core (managed by WordPress.com hosting) ---
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+license.txt
+readme.html
+
+# --- Managed Hosting Files (WordPress.com provides these) ---
+mu-plugins/
+object-cache.php*
+db-error.php
+advanced-cache.php
+wp-cache-config.php
+
+# --- Caches and Generated Files ---
+cache/
+w3tc-config/
+wp-content/cache/
+wp-content/w3tc-config/
+
+# --- Package Managers ---
+node_modules/
+vendor/
+.composer/
+
+# --- Build Artifacts ---
+*.map
+*.log
+
+# --- OS Files ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# --- IDE Files ---
+.idea/
+.vscode/
+*.sublime-*
+
+# --- WPVivid Backup Files ---
+wpvividbackups/
+wpvivid_package_info.json
+
+# --- Broken/Disabled Plugins ---
+*.broken/
+revslider.broken/
