@@ -1,73 +1,551 @@
 /* Do not delete this line */
 
 /* ------------------------------------------
-* BACKUP THIS FILE WHEN YOU UPDATE THE THEME!
------------------------------------------- */
+* REGIMA ZONE — UNIFIED BRAND THEME
+* Version: 2.0  |  Updated: 2026-03-25
+* Based on: BigPoint theme + RegimA brand guidelines
+* 
+* BRAND COLOUR PALETTE
+*   Deep Navy (Primary BG):   #00082c
+*   Dark Navy (Secondary BG): #001236
+*   Navy Surface:             #001a4a
+*   Navy Accent:              #00245e
+*   Electric Blue (Accent):   #0066cc
+*   Sky Blue (Highlight):     #00aaff
+*   White (Primary Text):     #ffffff
+*   Off-White (Body Text):    #e8eaf0
+*   Muted (Secondary Text):   #99a8c0
+*   Dark Text (Light BG):     #262f3a
+*   Border/Divider:           rgba(255,255,255,0.12)
+*
+* TYPOGRAPHY
+*   Headings:  Montserrat, sans-serif
+*   Body:      Open Sans, sans-serif
+*   UI/Nav:    Montserrat, sans-serif
+* ------------------------------------------ */
 
+/* ==========================================================
+   1. GOOGLE FONTS IMPORT
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap');
 
+/* ==========================================================
+   2. CSS CUSTOM PROPERTIES (BRAND TOKENS)
+   ========================================================== */
+:root {
+  /* Colour palette */
+  --rz-bg-primary:       #00082c;
+  --rz-bg-secondary:     #001236;
+  --rz-bg-surface:       #001a4a;
+  --rz-bg-accent:        #00245e;
+  --rz-blue-electric:    #0066cc;
+  --rz-blue-sky:         #00aaff;
+  --rz-blue-glow:        #4db8ff;
+  --rz-white:            #ffffff;
+  --rz-text-primary:     #e8eaf0;
+  --rz-text-muted:       #99a8c0;
+  --rz-text-dark:        #262f3a;
+  --rz-border:           rgba(255,255,255,0.12);
+  --rz-border-accent:    rgba(0,170,255,0.3);
 
-/* Basic Styles
--------------------------------------------------------------- */
+  /* Typography */
+  --rz-font-heading:     'Montserrat', sans-serif;
+  --rz-font-body:        'Open Sans', sans-serif;
 
-/* Add basic rules here */
+  /* Spacing scale */
+  --rz-space-xs:   8px;
+  --rz-space-sm:   16px;
+  --rz-space-md:   32px;
+  --rz-space-lg:   64px;
+  --rz-space-xl:   96px;
 
-#content .page-row.full-img {
-					background-color: #00082c !important;
+  /* Radii */
+  --rz-radius-sm:  4px;
+  --rz-radius-md:  8px;
+  --rz-radius-lg:  16px;
+
+  /* Shadows */
+  --rz-shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+  --rz-shadow-glow: 0 0 24px rgba(0,170,255,0.15);
 }
 
-#content .lol-item-heading-wide h2 {color: #FFFFFF;
+/* ==========================================================
+   3. GLOBAL RESET & BASE
+   ========================================================== */
+html, body {
+  background-color: var(--rz-bg-primary) !important;
+  color: var(--rz-text-primary) !important;
+  font-family: var(--rz-font-body) !important;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#content .lol-item-heading h2 {
-  margin-bottom: 0;
-  font-family: "Montserrat";
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 40px;
-  color: #262f3a;
+/* ==========================================================
+   4. TYPOGRAPHY
+   ========================================================== */
+h1, h2, h3, h4, h5, h6,
+.lol-item-heading h2,
+.lol-item-heading-wide h2,
+.lol-item-heading-small h2 {
+  font-family: var(--rz-font-heading) !important;
+  color: var(--rz-white) !important;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   text-transform: none;
 }
 
+h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 700; }
+h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 600; }
+h3 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 600; }
+h4 { font-size: clamp(18px, 2vw, 22px); font-weight: 500; }
+h5, h6 { font-size: 16px; font-weight: 500; }
+
+/* Heading overrides from custom CSS — bring into brand */
+#content .lol-item-heading h2,
 #content .lol-item-heading-small h2 {
-  margin-bottom: 0;
-  font-family: "Montserrat";
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 32px;
-  color: #262f3a;
+  font-family: var(--rz-font-heading) !important;
+  font-weight: 600 !important;
+  color: var(--rz-white) !important;
   text-transform: none;
 }
-/* Min width 992px
--------------------------------------------------------------- */
 
-@media (min-width: 992px) {
-
-	/* Add rules here */
-
+#content .lol-item-heading-wide h2 {
+  color: var(--rz-white) !important;
 }
 
-
-
-
-
-/* Min width 1200px
--------------------------------------------------------------- */
-
-@media (min-width: 1200px) {
-
-	/* Add rules here */
-
+p, li, td, th, label, input, textarea, select {
+  font-family: var(--rz-font-body) !important;
+  color: var(--rz-text-primary);
 }
 
+a {
+  color: var(--rz-blue-sky);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--rz-blue-glow);
+}
 
+strong, b { font-weight: 600; }
 
+/* ==========================================================
+   5. BACKGROUND & PAGE STRUCTURE
+   ========================================================== */
+#page,
+#wrapper,
+.site,
+.site-content,
+.entry-content,
+#content,
+.page-content,
+.hentry {
+  background-color: transparent !important;
+}
 
+/* Full-image rows — keep navy, remove any light BG override */
+#content .page-row.full-img {
+  background-color: var(--rz-bg-primary) !important;
+}
 
-/* Retina styles
--------------------------------------------------------------- */
+.page-row {
+  background-color: transparent;
+}
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+/* ==========================================================
+   6. NAVIGATION
+   ========================================================== */
+#header,
+.site-header,
+.lol-header,
+header.site-header {
+  background-color: var(--rz-bg-primary) !important;
+  border-bottom: 1px solid var(--rz-border) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
 
-	/* Add rules here */
+/* Nav links */
+.main-navigation a,
+.main-navigation li a,
+#navigation a,
+.lol-navigation a,
+nav a {
+  font-family: var(--rz-font-heading) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase !important;
+  color: var(--rz-white) !important;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
 
+.main-navigation a:hover,
+.main-navigation li a:hover,
+.main-navigation li.current-menu-item > a,
+.main-navigation li.current_page_item > a {
+  color: var(--rz-blue-sky) !important;
+  background-color: transparent !important;
+}
+
+/* Dropdown menus */
+.main-navigation .sub-menu,
+.main-navigation .children {
+  background-color: var(--rz-bg-secondary) !important;
+  border: 1px solid var(--rz-border) !important;
+  border-radius: var(--rz-radius-md);
+  box-shadow: var(--rz-shadow-card);
+}
+
+.main-navigation .sub-menu a,
+.main-navigation .children a {
+  color: var(--rz-text-primary) !important;
+  border-bottom: 1px solid var(--rz-border);
+}
+
+.main-navigation .sub-menu a:hover,
+.main-navigation .children a:hover {
+  color: var(--rz-blue-sky) !important;
+  background-color: var(--rz-bg-surface) !important;
+}
+
+/* ==========================================================
+   7. BUTTONS & CALLS TO ACTION
+   ========================================================== */
+.btn,
+.button,
+input[type="submit"],
+input[type="button"],
+button,
+.lol-button,
+.wp-block-button__link {
+  font-family: var(--rz-font-heading) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase !important;
+  border-radius: var(--rz-radius-md) !important;
+  padding: 12px 28px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer;
+}
+
+/* Primary button */
+.btn-primary,
+.button.btn-primary,
+.lol-button,
+input[type="submit"] {
+  background-color: var(--rz-blue-electric) !important;
+  border: 2px solid var(--rz-blue-electric) !important;
+  color: var(--rz-white) !important;
+}
+
+.btn-primary:hover,
+.lol-button:hover,
+input[type="submit"]:hover {
+  background-color: var(--rz-blue-sky) !important;
+  border-color: var(--rz-blue-sky) !important;
+  box-shadow: 0 0 16px rgba(0,170,255,0.4);
+}
+
+/* Ghost / outline button */
+.btn-outline,
+.button.btn-outline {
+  background-color: transparent !important;
+  border: 2px solid var(--rz-white) !important;
+  color: var(--rz-white) !important;
+}
+
+.btn-outline:hover {
+  background-color: var(--rz-white) !important;
+  color: var(--rz-bg-primary) !important;
+}
+
+/* ==========================================================
+   8. CARDS & CONTENT ITEMS
+   ========================================================== */
+.lol-item,
+.lol-product,
+.lol-portfolio-item,
+.lol-service-item,
+.widget,
+article.post,
+article.page,
+.card {
+  background-color: var(--rz-bg-secondary) !important;
+  border: 1px solid var(--rz-border) !important;
+  border-radius: var(--rz-radius-md) !important;
+  box-shadow: var(--rz-shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.lol-item:hover,
+.lol-product:hover,
+.lol-portfolio-item:hover,
+.card:hover {
+  box-shadow: var(--rz-shadow-glow);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================
+   9. PRODUCT FILTER BUTTONS
+   ========================================================== */
+.lol-filter a,
+.lol-filter-nav a,
+ul.lol-filter li a,
+.isotope-filter a {
+  font-family: var(--rz-font-heading) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em;
+  color: var(--rz-white) !important;
+  background-color: transparent !important;
+  border: 1px solid var(--rz-border-accent) !important;
+  border-radius: var(--rz-radius-sm) !important;
+  padding: 6px 16px !important;
+  transition: all 0.2s ease;
+}
+
+.lol-filter a:hover,
+.lol-filter a.active,
+.lol-filter a.selected,
+.isotope-filter a:hover,
+.isotope-filter a.active {
+  background-color: var(--rz-blue-electric) !important;
+  border-color: var(--rz-blue-electric) !important;
+  color: var(--rz-white) !important;
+}
+
+/* ==========================================================
+   10. FOOTER
+   ========================================================== */
+#footer,
+.site-footer,
+footer.site-footer,
+.lol-footer,
+footer {
+  background-color: var(--rz-bg-primary) !important;
+  border-top: 1px solid var(--rz-border) !important;
+  color: var(--rz-text-muted) !important;
+}
+
+#footer h2,
+#footer h3,
+#footer h4,
+.lol-footer h2,
+.lol-footer h3,
+footer h2,
+footer h3 {
+  color: var(--rz-white) !important;
+  font-family: var(--rz-font-heading) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em;
+}
+
+#footer a,
+.lol-footer a,
+footer a {
+  color: var(--rz-text-muted) !important;
+  transition: color 0.2s ease;
+}
+
+#footer a:hover,
+.lol-footer a:hover,
+footer a:hover {
+  color: var(--rz-blue-sky) !important;
+}
+
+/* Footer social icons */
+#footer .social-icons a,
+footer .social-icons a {
+  color: var(--rz-text-muted) !important;
+  font-size: 16px;
+}
+
+#footer .social-icons a:hover,
+footer .social-icons a:hover {
+  color: var(--rz-blue-sky) !important;
+}
+
+/* ==========================================================
+   11. FORMS & INPUTS
+   ========================================================== */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+textarea,
+select {
+  font-family: var(--rz-font-body) !important;
+  background-color: var(--rz-bg-surface) !important;
+  border: 1px solid var(--rz-border) !important;
+  border-radius: var(--rz-radius-md) !important;
+  color: var(--rz-white) !important;
+  padding: 10px 16px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--rz-blue-sky) !important;
+  box-shadow: 0 0 0 3px rgba(0,170,255,0.15) !important;
+}
+
+::placeholder {
+  color: var(--rz-text-muted) !important;
+  opacity: 1;
+}
+
+/* ==========================================================
+   12. PORTAL IFRAMES — CONSISTENT FRAME
+   ========================================================== */
+.slack-ws-frame-wrap,
+.portal-frame-wrap {
+  width: 100%;
+  height: 90vh;
+  min-height: 600px;
+  background-color: var(--rz-bg-secondary);
+  border: 1px solid var(--rz-border);
+  border-radius: var(--rz-radius-lg);
+  overflow: hidden;
+}
+
+.slack-ws-frame-wrap iframe,
+.portal-frame-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ==========================================================
+   13. DIVIDERS & SPACING
+   ========================================================== */
+hr,
+.lol-divider,
+.page-row-divider {
+  border-color: var(--rz-border) !important;
+  opacity: 1;
+}
+
+/* ==========================================================
+   14. BREADCRUMBS
+   ========================================================== */
+.breadcrumb,
+.lol-breadcrumb,
+#breadcrumbs {
+  font-family: var(--rz-font-body) !important;
+  font-size: 13px !important;
+  color: var(--rz-text-muted) !important;
+}
+
+.breadcrumb a,
+#breadcrumbs a {
+  color: var(--rz-text-muted) !important;
+}
+
+.breadcrumb a:hover,
+#breadcrumbs a:hover {
+  color: var(--rz-blue-sky) !important;
+}
+
+/* ==========================================================
+   15. SIDEBAR WIDGETS
+   ========================================================== */
+.widget-area .widget,
+#sidebar .widget {
+  background-color: var(--rz-bg-secondary) !important;
+  border: 1px solid var(--rz-border) !important;
+  border-radius: var(--rz-radius-md) !important;
+  padding: var(--rz-space-sm) !important;
+  margin-bottom: var(--rz-space-sm) !important;
+}
+
+.widget-title,
+.widgettitle {
+  font-family: var(--rz-font-heading) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em;
+  color: var(--rz-white) !important;
+  border-bottom: 1px solid var(--rz-border) !important;
+  padding-bottom: var(--rz-space-xs) !important;
+  margin-bottom: var(--rz-space-xs) !important;
+}
+
+/* ==========================================================
+   16. WOOCOMMERCE / PRODUCT PAGES
+   ========================================================== */
+.woocommerce-page,
+.woocommerce {
+  background-color: transparent !important;
+}
+
+.woocommerce-page table.shop_table,
+.woocommerce table.shop_table {
+  background-color: var(--rz-bg-secondary) !important;
+  border: 1px solid var(--rz-border) !important;
+  border-radius: var(--rz-radius-md) !important;
+}
+
+.woocommerce-page table.shop_table th {
+  background-color: var(--rz-bg-surface) !important;
+  color: var(--rz-white) !important;
+  font-family: var(--rz-font-heading) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em;
+}
+
+.woocommerce-page table.shop_table td {
+  color: var(--rz-text-primary) !important;
+  border-color: var(--rz-border) !important;
+}
+
+/* ==========================================================
+   17. MOBILE RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  h3 { font-size: 18px; }
+
+  .main-navigation {
+    background-color: var(--rz-bg-primary) !important;
+  }
+
+  .main-navigation .sub-menu,
+  .main-navigation .children {
+    background-color: var(--rz-bg-secondary) !important;
+  }
+}
+
+/* ==========================================================
+   18. ACCESSIBILITY — FOCUS RINGS
+   ========================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--rz-blue-sky) !important;
+  outline-offset: 2px !important;
+}
+
+/* ==========================================================
+   19. PRINT STYLES
+   ========================================================== */
+@media print {
+  body { background: white !important; color: black !important; }
+  nav, footer, .lol-filter { display: none !important; }
 }
