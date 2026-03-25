@@ -213,6 +213,32 @@ add_action('wp_enqueue_scripts', 'lollum_register_css');
 
 
 /**
+ * Enqueue portal sidebar CSS + JS on portal pages only.
+ */
+if (!function_exists('rz_enqueue_portal_sidebar')) {
+	function rz_enqueue_portal_sidebar() {
+		$portal_ids = array(2540, 2541, 2542, 2543);
+		if (is_page($portal_ids)) {
+			wp_enqueue_style(
+				'rz-portal-sidebar',
+				get_template_directory_uri() . '/css/portal-sidebar.css',
+				array(),
+				'1.0'
+			);
+			wp_enqueue_script(
+				'rz-portal-sidebar',
+				get_template_directory_uri() . '/js/portal-sidebar.js',
+				array(),
+				'1.0',
+				true
+			);
+		}
+	}
+}
+add_action('wp_enqueue_scripts', 'rz_enqueue_portal_sidebar');
+
+
+/**
  * Queue frontend scripts/styles.
  */
 
